@@ -1,4 +1,4 @@
-const Game = () => {
+const Game: React.FC = () => {
     return (
         <div>game</div>
     )

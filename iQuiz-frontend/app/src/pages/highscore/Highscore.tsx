@@ -1,4 +1,4 @@
-const Highscore = () => {
+const Highscore: React.FC = () => {
     return (
         <div>Highscore</div>
     )

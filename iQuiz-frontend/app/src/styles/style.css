@@ -3,25 +3,69 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Roboto'), url('../assets/fonts/Roboto-Regular.ttf') format('truetype');
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto"),
+    url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Roboto'), url('../assets/fonts/Roboto-Bold.ttf') format('truetype');
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Roboto"),
+    url("../assets/fonts/Roboto-Bold.ttf") format("truetype");
 }
 
 :root {
-    --primary: #7F27FF;
+  --primary: #7f27ff;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    scroll-behavior: smooth;
-    color: var(--primary);
+  font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
+  color: var(--primary);
+}
+
+@media (min-width: 48rem) {
+  body {
+    overflow-y: hidden;
+  }
+}
+
+.input {
+  border-bottom-width: 2px;
+  border-bottom-color: var(--primary);
+  border-bottom-style: solid;
+  border-radius: 0.125rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  min-width: 4.5rem; 
+  outline: none;
+  width: 100%;
+  color: var(--primary);
+  text-align: center;
+}
+
+@media (min-width: 48rem) {
+  .input {
+    min-width: 18rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .input {
+    text-align: left;
+  }
+}
+
+.input::placeholder {
+  color: var(--primary);
+}
+
+.err {
+  color: red;
 }
