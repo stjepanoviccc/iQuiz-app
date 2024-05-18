@@ -1,27 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 const useCheckDevice = (): number => {
-  const isClient: boolean = typeof window === 'object'; 
+  const isClient: boolean = typeof window === 'object' 
 
-  const [windowWidth, setWindowWidth] = useState<number>(isClient ? window.innerWidth : 0);
+  const [windowWidth, setWindowWidth] = useState<number>(isClient ? window.innerWidth : 0)
 
   useEffect((): (() => void) | void => {
     if (!isClient) {
-      return;
+      return
     }
 
     const handleResize = (): void => {
-      setWindowWidth(window.innerWidth);
-    };
+      setWindowWidth(window.innerWidth)
+    }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [isClient]);
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [isClient])
 
-  return windowWidth;
+  return windowWidth
 }
 
-export default useCheckDevice;
+export default useCheckDevice

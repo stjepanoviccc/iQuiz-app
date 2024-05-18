@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode } from "react"
 
 interface ButtonProps {
-    extendClass?: string; 
-    onClick?: () => void; 
-    type: "button" | "submit" | "reset" | undefined;
-    children: ReactNode;
+    extendClass?: string 
+    onClick?: () => void 
+    type: "button" | "submit" | "reset" | undefined
+    children: ReactNode
 }
 
 const Button:React.FC<ButtonProps> = ({ extendClass, onClick, type, children }) => {
@@ -13,7 +13,7 @@ const Button:React.FC<ButtonProps> = ({ extendClass, onClick, type, children }) 
                 onClick={onClick} type={type}>
             {children}
         </button>
-    );
+    )
 }
 
-export default Button;
+export default Button

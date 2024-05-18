@@ -1,23 +1,36 @@
-import { useAuth } from "../../contexts/auth";
-import Wrap from "../../components/UI/wrap";
-import Button from "../../components/UI/button/Button";
+import { useAuth } from "../../contexts/auth"
+import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { logout } from "../../services/auth"
+import Logo from "../../components/UI/logo"
+import Wrap from "../../components/UI/wrap"
+import Button from "../../components/UI/button"
 
 const Home: React.FC = () => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    navigate("/")
+  }
 
   return (
     <div>
-      {isLoggedIn ? (
+      {isLoggedIn && (
         <Wrap extendClass="flex flex-col justify-center items-center gap-y-4">
-          <img className="w-60 h-32 sm:w-80 sm:h-40"  src="/assets/iQuiz-white.png" alt="iQuiz Logo" />
-          <Button extendClass="w-64 sm:w-80 py-4 text-white text-xl hover:text-primary hover:bg-white" type="button">START GAME</Button>
-          <Button extendClass="w-64 sm:w-80 py-4 text-white text-xl hover:text-primary hover:bg-white" type="button">HIGHSCORE</Button>
+          <Logo />
+          <Link to="/game">
+            <Button extendClass="w-64 sm:w-80 py-4 text-white text-xl hover:text-primary hover:bg-white" type="button">START GAME</Button>
+          </Link>
+          <Link to="/highscores">
+            <Button extendClass="w-64 sm:w-80 py-4 text-white text-xl hover:text-primary hover:bg-white" type="button">HIGHSCORE</Button>
+          </Link>
+          <Button extendClass="w-64 sm:w-80 py-4 text-white text-xl hover:text-primary hover:bg-white" type="button" onClick={handleLogout}>LOG OUT</Button>
         </Wrap>
-      ) : (
-        <div className="text-red-600">Please log in</div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

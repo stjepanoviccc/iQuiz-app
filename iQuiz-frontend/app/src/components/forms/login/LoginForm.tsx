@@ -1,27 +1,27 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../contexts/auth";
-import Button from "../../UI/button/Button";
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { useAuth } from "../../../contexts/auth"
+import Button from "../../UI/button"
 
 const LoginForm: React.FC = () => {
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [errorMsg, setErrorMsg] = useState<string>("");
-  const navigate = useNavigate();
-  const { login } = useAuth();
+  const [username, setUsername] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+  const [errorMsg, setErrorMsg] = useState<string>("")
+  const navigate = useNavigate()
+  const { login } = useAuth()
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const userData = { username, password };
-      await login(userData);
-      setUsername("");
-      setPassword("");
-      navigate("/home");
+      const userData = { username, password }
+      await login(userData)
+      setUsername("")
+      setPassword("")
+      navigate("/home")
     } catch (error) {
-      setErrorMsg("Login failed.");
+      setErrorMsg("Login failed.")
     }
-  };
+  }
 
   return (
     <form onSubmit={handleLogin} className="flex flex-col gap-y-6">
@@ -61,7 +61,7 @@ const LoginForm: React.FC = () => {
         </div>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

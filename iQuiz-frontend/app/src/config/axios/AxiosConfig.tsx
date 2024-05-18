@@ -1,5 +1,6 @@
 import Axios, { AxiosError, AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
 import { refreshAccessToken } from '../../services/auth'
+import TokenService from '../../services/token'
 
 interface AxiosRequestConfigWithRetry extends AxiosRequestConfig {
   _retry?: boolean
@@ -10,12 +11,14 @@ export const axios = Axios.create({
   withCredentials: true
 })
 
-const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
-    const token = localStorage.getItem('token')
-    if (token) {
+const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
+    const accessToken = TokenService.getAccessToken()
+    const refreshToken = TokenService.getRefreshToken()
+    if (accessToken) {
       config.headers = config.headers || {}
-      config.headers['Authorization'] = `Bearer ${token}`
+      config.headers['Authorization'] = `Bearer ${accessToken}`
       config.headers['Cache-Control'] = 'no-cache'
+      config.headers['x-refresh-token'] = refreshToken
     }
     return config
   }
@@ -35,7 +38,6 @@ const onRequestError = async (error: AxiosError): Promise<AxiosError> => {
   return Promise.reject(error)
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-axios.interceptors.request.use(onRequest as (value: InternalAxiosRequestConfig<any>) => InternalAxiosRequestConfig<any>, onRequestError)
+axios.interceptors.request.use(onRequest, onRequestError)
 
 export default axios

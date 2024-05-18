@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { register } from "../../../services/auth"
-import Button from "../../UI/button/Button"
+import Button from "../../UI/button"
 
 const RegisterForm: React.FC = () => {
   const [username, setUsername] = useState<string>("")

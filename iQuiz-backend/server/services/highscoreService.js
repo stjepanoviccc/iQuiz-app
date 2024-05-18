@@ -13,7 +13,7 @@ exports.create = async (highscoreData) => {
 
 exports.findAll = async () => {
     try {
-        const highscores = await Highscore.find()
+        const highscores = await Highscore.find().sort({ score: -1 }).limit(5)
         return highscores
     } catch (error) {
         console.error('Error fetching highscores:', error)

@@ -1,2 +1,2 @@
-import useCheckDevice from "./CheckDevice";
-export default useCheckDevice;
+import useCheckDevice from "./CheckDevice"
+export default useCheckDevice
