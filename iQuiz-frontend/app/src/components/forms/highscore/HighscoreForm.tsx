@@ -18,7 +18,7 @@ const HighscoreForm: React.FC<{ points: number }> = ({ points }) => {
     isLoggedIn && (
       <form className="flex flex-col gap-y-2 text-white text-center font-bold" onSubmit={handleSubmit}>
         <Button extendClass="w-64 sm:w-80 py-4 text-white text-xl hover:text-primary hover:bg-white mt-4" type="submit">
-          Submit Score
+          SUBMIT SCORE
         </Button>
       </form>
     )

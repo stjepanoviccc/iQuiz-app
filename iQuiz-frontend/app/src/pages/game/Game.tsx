@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useAuth } from "../../contexts/auth"
 import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
+import { logout } from "../../services/auth"
 import { fetchQuestions } from "../../services/triviaApi"
 import HighscoreForm from "../../components/forms/highscore"
 import Wrap from "../../components/UI/wrap"
@@ -55,6 +55,11 @@ const Game: React.FC = () => {
     }
   }
 
+  const handleLogout = () => {
+    logout()
+    navigate("/")
+  }
+
   if (error || !isLoggedIn) {
     navigate("/error")
   }
@@ -91,11 +96,7 @@ const Game: React.FC = () => {
             <p className="text-xl">Your answer isn't correct.</p>
             <p className="text-xl">You have {points} points.</p>
             <HighscoreForm points={points} />
-            <Link to="/home">
-              <Button extendClass="w-64 sm:w-80 py-4 text-white text-xl hover:text-primary hover:bg-white" type="button">
-                Home
-              </Button>
-            </Link>
+            <Button extendClass="w-64 sm:w-80 py-4 text-white text-xl hover:text-primary hover:bg-white" type="button" onClick={handleLogout}>LOG OUT</Button>
           </div>
       )}
     </div>
