@@ -20,8 +20,6 @@ To start this project you need to have installed **Docker**.
 2. run next command: docker-compose up --build
 3. in browser open http://127.0.0.1 and enjoy game
 
-## Author
-
-**Andrej Stjepanović**  
-Student at the **Faculty of Technical Sciences** in Novi Sad  
-Undergraduate of Software Engineering
+## Author  
+Andrej Stjepanović,  
+Software Developer
